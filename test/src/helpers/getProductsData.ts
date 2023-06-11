@@ -1,0 +1,6 @@
+import axios from "axios"
+
+export const getProductsData = (url: string): any => {
+    const data = axios.get(url).then((response: any) => response.data)
+    return data
+}
