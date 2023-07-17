@@ -1,0 +1,10 @@
+button {
+  width: 80px;
+}
+img {
+  height: 30px;
+}
+div > div {
+  display: grid;
+  grid-template-columns: 1fr;
+}

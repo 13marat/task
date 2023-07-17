@@ -1,37 +1,38 @@
-import React, { useEffect } from 'react'
-import './App.css';
+import React from 'react'
 import Signin from './Components/Singin/Signin';
-import {Routes, Route} from 'react-router-dom'
+import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom'
 import Items from './Components/Items/Items';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
-import { apis } from './Apis/apis';
-import { getUser } from './Slices/usersSlice';
-import { usersType } from './types/types';
-import { getUsersData } from './helpers/getUsersData';
-import { filterUsersData } from './helpers/filterUsersData';
+import Error from './Components/Error/Error';
+import { useApp } from './App.hook';
+import Loading from './Components/Loading';
+import { useSelector } from 'react-redux';
+import { StateType } from './types/Types';
 
 const App = () => {
-  const dispatch = useDispatch()
-  const users = useSelector((state: any) => state.users)
+  const { currentUser } = useApp()
+  const { loading } = useSelector((state: StateType) => state.users)
 
-  useEffect(() => {
-    const data = getUsersData(apis.users)
-    data.then((response: any) => dispatch(getUser(filterUsersData(response))))
-  }, [])
-
-  
   return (
     <>
-    <Routes>
-      <Route path='/' Component={Signin}/>
-      <Route path='/items' Component={Items}/>
-    </Routes>    
+      {
+        loading ? <Loading />
+        :
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' Component={Signin} />
+            <Route path='/error' Component={Error} />
+            {currentUser
+              ? <Route
+                path='/items'
+                Component={Items}/>
+                :
+               <Route path='/items' element={<Navigate to='/' replace />} />}
+            {<Route path='*' element={<Navigate to='/error' replace />} />}
+          </Routes>
+        </BrowserRouter>
+      }
     </>
   )
 }
 
 export default App
-
-
-

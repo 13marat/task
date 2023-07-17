@@ -1,22 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { ProductsType } from "../types/Types";
 
 export const itemsSlice = createSlice({
     name: "items",
-    initialState: [],
+    initialState: {
+        loading: false,
+        error: false,
+        initialProducts: []
+    },
     reducers: {
-        getItems: (state: any, action: any): any => {
-            const items = action.payload
-            return items
+        setItems: (state: any, action: PayloadAction<ProductsType[]>) : any => {
+            return {...state, initialProducts: action.payload}
+        },
+
+        setProductsLoading: (state: any, action: PayloadAction<boolean>): any => {
+            return {...state, loading: action.payload}
+        },
+        setProductsError: (state: any, action: PayloadAction<boolean>): any =>{
+            return {...state, error: action.payload}
         }
     }
 })
-
-
-
-export const {getItems} = itemsSlice.actions
+export const {setItems, setProductsLoading, setProductsError} = itemsSlice.actions
 export const itemsReducer =  itemsSlice.reducer
-
-
-
-
-
