@@ -52,23 +52,6 @@ export interface AxiosUser{
     website: string
 }
 
-export type UsersType = {
-    id: number,
-    name: string,
-    email: string,
-    phone: string
-    username: string
-}
-
-export type ProductsType = {
-    id: number,
-    description: string,
-    image: string,
-    price: number,
-    title: string,
-    count: number
-}
-
 export interface InitialUsersInterface{
     loading: boolean,
     error: boolean,
@@ -91,5 +74,5 @@ export type PersistedState = {
     version: number
 }
 
-// export type UsersType = Pick<AxiosUser, "id"| "name"| "email"| "phone"| "username"> & {description: string}
-// export type ProductsType = Pick<AxiosProduct, "description" | "image" | "price" | "title" | "id"> & {count: number}
+export type UsersType = Pick<AxiosUser, "id"| "name"| "email"| "phone"| "username">
+export type ProductsType = Pick<AxiosProduct, "description" | "image" | "price" | "title" | "id"> & {count: number}

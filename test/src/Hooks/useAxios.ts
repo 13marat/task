@@ -15,8 +15,9 @@ export const useAxios = () => {
     const result: AxiosResponse<AxiosUser[]> = await axios.get(apis.users)
     try{
       dispatch(setUsers(filterUsersData(result.data)))
+      //TODO: any
     }catch(error: any){
-      dispatch(setUsersError(error))
+      dispatch(setUsersError(true))
     }finally{
       dispatch(setUsersLoading(false))
     }
@@ -29,8 +30,9 @@ export const useAxios = () => {
     const result: AxiosResponse<AxiosProduct[]> = await axios.get(apis.products)
     try{
       dispatch(setItems(filterProductsData(result.data)))
+      //TODO: any
     }catch(error: any){
-      dispatch(setProductsError(error))
+      dispatch(setProductsError(true))
     }finally{
       dispatch(setProductsLoading(false))
     }
