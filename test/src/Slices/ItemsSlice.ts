@@ -15,7 +15,7 @@ export const itemsSlice = createSlice({
         setProductsLoading: (state: any, action: PayloadAction<boolean>): any => {
             return {...state, loading: action.payload}
         },
-        setProductsError: (state: any, action: PayloadAction<boolean>): any =>{
+        setProductsError: (state: any, action: PayloadAction<any>): any =>{
             return {...state, error: action.payload}
         }
     }

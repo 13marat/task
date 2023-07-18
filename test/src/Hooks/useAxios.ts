@@ -18,6 +18,7 @@ export const useAxios = () => {
       //TODO: any
     }catch(error: any){
       dispatch(setUsersError(true))
+      console.log(error)
     }finally{
       dispatch(setUsersLoading(false))
     }
@@ -33,6 +34,7 @@ export const useAxios = () => {
       //TODO: any
     }catch(error: any){
       dispatch(setProductsError(true))
+      console.log(error.response)
     }finally{
       dispatch(setProductsLoading(false))
     }

@@ -15,7 +15,7 @@ export const usersSlice = createSlice({
         setUsersLoading: (state: any, action: PayloadAction<boolean>): any => {
             return {...state, loading: action.payload}
         },
-        setUsersError: (state: any, action: PayloadAction<boolean>): any =>{
+        setUsersError: (state: any, action: PayloadAction<any>): any =>{
             return {...state, error: action.payload}
         }
     }
