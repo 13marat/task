@@ -14,6 +14,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import { errorReducer } from "./Slices/ErrorSlice";
 
 const rootReducer = combineReducers({
   current: currentReducer,
@@ -33,6 +34,7 @@ const store = configureStore({
     items: itemsReducer,
     cart: cartReducer,
     current: persistedReducer,
+    error: errorReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

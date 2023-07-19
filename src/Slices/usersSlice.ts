@@ -5,7 +5,6 @@ export const usersSlice = createSlice({
     name: "users",
     initialState: {
         loading: false,
-        error: false,
         initialUsers: []
     },
     reducers: {
@@ -14,12 +13,9 @@ export const usersSlice = createSlice({
         },
         setUsersLoading: (state: any, action: PayloadAction<boolean>): any => {
             return {...state, loading: action.payload}
-        },
-        setUsersError: (state: any, action: PayloadAction<any>): any =>{
-            return {...state, error: action.payload}
         }
     }
 })
 
-export const {setUsers, setUsersLoading, setUsersError} = usersSlice.actions
+export const {setUsers, setUsersLoading} = usersSlice.actions
 export const usersReducer =  usersSlice.reducer

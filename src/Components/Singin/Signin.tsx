@@ -1,11 +1,14 @@
 import React from 'react'
 import { Formik, Field, Form} from 'formik'
 import useSignin from './useSignin'
-import { UserEmail } from '../../types/Types'
+import { StateType, UserEmail } from '../../types/Types'
 import { validationSchema } from '../../validation'
 import "./Signin.css"
+import { useSelector } from 'react-redux'
+import Error from '../Error/Error'
 
 const Signin = () => {
+  const error = useSelector((state: StateType) => state.error)
   const {handleSubmit} = useSignin()
   
   const initial: UserEmail = {
@@ -14,6 +17,7 @@ const Signin = () => {
   }
   
   return (
+    !error?
     <div className='container'>
       <h1>Signin</h1>
       <Formik initialValues = {initial}
@@ -34,6 +38,8 @@ const Signin = () => {
       )}
       </Formik>
     </div>
+    :
+    <Error/>
   )
 }
 

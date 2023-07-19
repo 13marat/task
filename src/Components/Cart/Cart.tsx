@@ -7,28 +7,28 @@ import './Cart.css'
 
 const Cart = () => {
   const cart = useSelector((state: StateType) => state.cart)
-  const {editCart} = useCart()
+  const error = useSelector((state: StateType) => state.error)
+  const { editCart } = useCart()
 
   return (
-  <>
-    <Profile/>
-    <div>
+    <>
+      {!error &&
+        <Profile />}
       {cart.map((item) => {
-        const {image, price, title, count} = item
-        return(
-        <div key={price + count}>
-          <div>{title}</div>
-          <div>{price}</div>
-          <div>{count}</div>
-          {/* <div><img src = {image}/></div> */}
-          <button onClick={() => editCart(item, CartFunctionsArguments.MinusCount)}>Minus</button>
-          <button onClick={() => editCart(item, CartFunctionsArguments.PlusCount)}>Plus</button>
-          <button onClick={() => editCart(item)}>Delete</button>
-        </div>
+        const { image, price, title, count } = item
+        return (
+          <div key={price + count}>
+            <div>{title}</div>
+            <div>{price}</div>
+            <div>{count}</div>
+            {/* <div><img src = {image}/></div> */}
+            <button onClick={() => editCart(item, CartFunctionsArguments.MinusCount)}>Minus</button>
+            <button onClick={() => editCart(item, CartFunctionsArguments.PlusCount)}>Plus</button>
+            <button onClick={() => editCart(item)}>Delete</button>
+          </div>
         )
       })}
-    </div>
-  </>
+    </>
   )
 }
 

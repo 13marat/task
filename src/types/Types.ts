@@ -9,6 +9,8 @@ export enum CartFunctionsArguments {
 }
 
 export interface StateType{
+    //any
+    error: any,
     cart: ProductsType[],
     current: PersistedCurrentUser,
     items: InitialProductsInterface,
@@ -54,13 +56,11 @@ export interface AxiosUser{
 
 export interface InitialUsersInterface{
     loading: boolean,
-    error: boolean,
     initialUsers: UsersType[]
 }
 
 export interface InitialProductsInterface{
     loading: boolean,
-    error: boolean,
     initialProducts: ProductsType[]
 }
 

@@ -11,11 +11,12 @@ import { StateType } from './types/Types';
 const App = () => {
   const { currentUser } = useApp()
   const { loading } = useSelector((state: StateType) => state.users)
+  const error = useSelector((state: StateType) => state.error)
 
   return (
     <>
       {
-        loading ? <Loading />
+        loading && !error ? <Loading />
         :
         <BrowserRouter>
           <Routes>
