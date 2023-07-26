@@ -1,11 +1,11 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { useItem } from './Item.hook'
-import { ItemType, StateType } from '../../types/Types'
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useItem } from './Item.hook';
+import { ItemType, StateType } from '../../types/Types';
 
-const Item = ({item}: ItemType) => {
-  const cart = useSelector((state: StateType) => state.cart)
-  const {handleClick} = useItem(cart)
+const Item = ({ item }: ItemType) => {
+  const cart = useSelector((state: StateType) => state.cart);
+  const { handleClick } = useItem(cart);
 
   return (
     <>
@@ -16,6 +16,6 @@ const Item = ({item}: ItemType) => {
       </div>
       <button onClick={() => handleClick(item)}>ADD</button>
     </>
-  )
-}
-export default Item
+  );
+};
+export default Item;

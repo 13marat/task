@@ -1,28 +1,18 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { usersReducer } from "./Slices/usersSlice";
-import { itemsReducer } from "./Slices/ItemsSlice";
-import { currentReducer } from "./Slices/currentUser";
-import { cartReducer } from "./Slices/cartSlice";
-import storage from "redux-persist/lib/storage";
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from "redux-persist";
-import { errorReducer } from "./Slices/ErrorSlice";
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { usersReducer } from './Slices/usersSlice';
+import { itemsReducer } from './Slices/ItemsSlice';
+import { currentReducer } from './Slices/currentUser';
+import { cartReducer } from './Slices/cartSlice';
+import { errorReducer } from './Slices/ErrorSlice';
+import storage from 'redux-persist/lib/storage';
+import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 
 const rootReducer = combineReducers({
   current: currentReducer,
 });
 
-
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage,
 };
 
@@ -34,7 +24,7 @@ const store = configureStore({
     items: itemsReducer,
     cart: cartReducer,
     current: persistedReducer,
-    error: errorReducer
+    error: errorReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -1,27 +1,24 @@
-import { AxiosProduct, AxiosUser, ProductsType, UsersType } from "../types/Types";
+import { AxiosProduct, AxiosUser, ProductsType, UsersType } from '../types/Types';
 
 export const filterProductsData = (products: AxiosProduct[]): ProductsType[] => {
-
-  const filteredProducts: ProductsType[] = products.map((product: any) => ({    
+  const filteredProducts: ProductsType[] = products.map((product: AxiosProduct) => ({
     id: product.id,
     description: product.description,
     image: product.image,
     price: Math.floor(product.price),
     title: product.title,
     count: 1,
-  })
-);
-  return filteredProducts
-}
+  }));
+  return filteredProducts;
+};
 
 export const filterUsersData = (users: AxiosUser[]): UsersType[] => {
-  
-  const filterUsers: UsersType[] = users.map((user: any) => ({
+  const filterUsers: UsersType[] = users.map((user: AxiosUser) => ({
     id: user.id,
     name: user.name,
     email: user.email,
     phone: user.phone,
-    username: user.username
+    username: user.username,
   }));
-  return filterUsers
-}
+  return filterUsers;
+};

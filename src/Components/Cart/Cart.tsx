@@ -1,21 +1,20 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { CartFunctionsArguments, StateType } from '../../types/Types'
-import { useCart } from './Cart.hook'
-import Profile from '../Profile/Profile'
-import './Cart.css'
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { CartFunctionsArguments, StateType } from '../../types/Types';
+import { useCart } from './Cart.hook';
+import Profile from '../Profile/Profile';
+import './Cart.css';
 
 const Cart = () => {
-  const cart = useSelector((state: StateType) => state.cart)
-  const error = useSelector((state: StateType) => state.error)
-  const { editCart } = useCart()
+  const cart = useSelector((state: StateType) => state.cart);
+  const error = useSelector((state: StateType) => state.error);
+  const { editCart } = useCart();
 
   return (
     <>
-      {!error &&
-        <Profile />}
+      {!error && <Profile />}
       {cart.map((item) => {
-        const { image, price, title, count } = item
+        const { image, price, title, count } = item;
         return (
           <div key={price + count}>
             <div>{title}</div>
@@ -26,10 +25,10 @@ const Cart = () => {
             <button onClick={() => editCart(item, CartFunctionsArguments.PlusCount)}>Plus</button>
             <button onClick={() => editCart(item)}>Delete</button>
           </div>
-        )
+        );
       })}
     </>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
